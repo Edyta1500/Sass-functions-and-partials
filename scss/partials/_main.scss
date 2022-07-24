@@ -1,0 +1,33 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'mixins';
+@use 'variables';
+@use 'functions';
+
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    background-color: #5f9ea0;
+    align-items: center;
+    justify-content: center;
+}
+
+div {
+    position: absolute;
+    width: functions.calculate(150, 1, m);
+    height: 150px;
+    margin: 10px;
+    box-sizing: border-box;
+    background-color: color.invert(#5f9ea0, 50%);
+    @include mixins.border;
+    transform: translate(-100px);
+}
+
+div:nth-of-type(2){
+    transform: translate(100px);
+    @include mixins.border ($border-color: color.invert(#5f9ea0, 100%), $border-size:5px, $border-type: dotted);
+}
+
+

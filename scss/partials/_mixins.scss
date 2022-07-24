@@ -1,0 +1,10 @@
+@use 'variables' as v;
+
+@mixin border($border-color: v.$border-color, $border-size: v.$border-size, $border-type: v.$border-type) {
+
+    border: $border-size $border-type $border-color;
+
+    @if $border-size >5px {
+        $border-size: 5px;
+    }
+}

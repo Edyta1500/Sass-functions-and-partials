@@ -1,0 +1,35 @@
+@use 'sass:math';
+@use 'sass:meta';
+
+@function calculate($num1, $num2, $dzialanie) {
+    @if math.is-unitless($num1) 
+        and math.is-unitless($num2)
+        and meta.type-of($num1) == 'number' 
+        and meta.type-of($num2) == 'number'
+        {
+
+        @if $dzialanie =='m' {
+            $result: $num1*$num2;
+            @return $result +px;
+
+        }
+
+        @else if $dzialanie =='dz' {
+
+            $result: math.div($num1, $num2);
+            @return math.round($result)+px;
+        }
+
+        @else if $dzialanie =='o' {
+            $result: $num1 - $num2;
+            @return $result +px;
+        }
+
+        @else if $dzialanie =='d' {
+            $result: $num1 +$num2;
+            @return $result +px;
+        }
+    }
+        @return '' /*'$num1' i '$num2' muszą być liczbami bez jednostek*/ ; 
+    
+}
